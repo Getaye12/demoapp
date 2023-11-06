@@ -1,0 +1,379 @@
+1, set up the git repository {
+
+}
+
+2, set up the dev database locally{
+    install mysql2 on your local machine
+    create a new database {
+        name: "dev_database",
+        username: "root",
+        password: "",
+        hostname: "localhost",
+        port: 3306,
+    }
+}
+3, lets design the table {
+    users {
+        id: int(auto increment) primary key
+        firstName: varchar(50), not null
+        lastName: varchar(50), not null
+        email: varchar(254), unique, not null
+        encryptedPassword: varchar(255), not null
+        }
+}
+4, know let us create the root Name called "demoapp"
+then from demoapp root directory let us clone github repo
+git clone "URL" 
+
+======== setup the back end====
+---------------------------------
+1, Create the "backend" folder
+2, To hold all your backend codes
+  -package.json file
+3, Create the initial package.json file to truck your dependencies
+      -npm init,
+
+      4, Create the app.js(file):-
+        -This is the main file that we use to run and manage the backend server
+        -Let us now start writing our code 
+          -let's start by creating our webserver
+            -Install Express
+              -npm install express, then
+              //import the express module
+              //import the express from app.js
+              // setup the port to listen to--
+              // set up the listener
+              -Lets now create a simple get request handler to send a response back 
+              //Create a simple get request handler to send a response back
+              -Test it on the browser
+              //https://localhost:400/
+              -check back end by nodemon app.js
+              then
+
+              ==lets now connect with database
+              -to do that we need the mysql2 bridge module to connect to the database
+              -install mysql2 module
+              //import the mysql2 module from app.js
+              //Define the connection parametrs for the database
+              //Create connection to database
+              //connect to the database
+              
+
+              ---Let's now design and prepare the API Documentation
+              //Remember,
+              -There is no code to write for this step. The goal of this step is to define what is to be send to the backend server and what is to be recieved from it.
+              -We are restricted by HTTP protocol, Meaning:- We can send and recieve data in the form of text
+              -The server should be programmed to understand the text we send to it and send back us the data we need.Meaning, it is (our backend Developers) responsibility to write the code that handles the request.
+
+              -API End point documentations for our test pages
+              -add-employee,
+               -Route choosen: /add-employee,
+               -Request Method: POST,
+               -Request Format: JSON,
+               -Request Sample {
+                "first_name":"John"
+                "last_name": "Doe",
+                "email": "john@doe.com",
+                "password": "Getaye",
+
+               }
+
+               -Response Format: JSON
+               -Response Sample: JSON {
+                status:'success',
+                message: "Employee added successfully"
+                }
+                -let us now develop the end point handlers
+                  -Route: /add-employee
+                  //POST request handler to add a new employee to the database
+                  -write the sql query
+                  -To get values from the request body, we need to use the express.json() middleware to parse the request body
+                  -excute the query
+                  -send the response back(success or Error) to the client
+                  -Test it by sending a POST request to the end point using "postman"
+
+                  ====// post request handler to login an employee
+                  //post request handler to login an employee which comes to this route/login
+                  -Route: /login
+                   //write the sql query to retrive the employe_test with email and password provided by the user and compare it with the data in database
+                   //execute the query
+                    //check if the result is empty or not
+                    ///send a response back to a client
+                    //send a response back to the client
+                    //set up the port to listen to
+                    //set up the listener
+
+
+
+                    ===let us proceed to front end developement====
+                    ----setup the frontend-------------
+                    ---------------------------------------
+                    -Front (Folder):-
+                    -> Run the following command to create the front end react app from the project folder (frontend)
+                    ->npx create-react-app frontend
+                    -> you acn use vite here possible 
+                    ->GO to app.js and edit the page to test if it is working
+                    -> keep a simple text that syas "Test app" in the body
+                    -> based on wirefarames, we need to create the following pages:-
+                    -> Home
+                    path:/
+                    ->Add Employee
+                    path:/add-employee
+                    -> Login
+                    path: /login
+
+                    *Notes:
+                    -Eventhough the paths above are similar with the ones we used for the back end, since the webservers are different, we can use the smae path names.
+                    ->we used express.js for the backend and the webserver.
+                    ->Apps created using create-react-app include a built-in development server for local development purpose (webpack Dev Server)
+                    -> Let us now create the pages;-
+                    ->Create a folder called pages and create the following files to hold the pages:-
+                    -AddEmployee.js
+                    -Login.js
+                    -Home.js
+                    * Enabled the Reactjs code snippets extension on Vscode to make it easier to write the code.
+                    -> use rfc to create a simpke placeholder component on both pages. We will come back and add the forms later.
+
+                    ->Add the routes to the pages on the app.js file
+                    -npm i react-router
+                    //import the Router from 'react-router from app.js
+                    -> Install the BrowserRouter
+                    -> npm i react-router-dom
+                    ->Import the BrowserRouter from react-router
+                    ->wrap the app component with the BrowserRouter component (on index.js)
+                    -This ensures that all the child components have acces to the routing features provided by React router
+                    -> Import the page components on the app.js file(These are different components we want to send for different requests)
+                    -> Import the page components
+                    -add the routes
+                    -Home:/
+                    -AddEmployee: /add-employee
+                    -Login: /login
+                    -Test the routes on the browser
+                    -http://localhost:3000/
+                    -http://localhost:3000/add-employee
+                    -http://localhost:3000/login
+
+                    -> Add a simple add-employee form
+                    ======               ============
+                          ===============
+                          ==Complete Procedures of Server Configurations===-===
+                          ---------------step by step Guid-------------------
+                          ===============================================
+
+                          1, Create EC2 Awsamazon account
+                          2, go to ec2 dashboard
+                          3,Launch Instance, Create key pair also
+                          4, after you launch instance click instance top
+                          5, Connect Instance and go to ssh client
+                          6, save downloaded security key pair from required position
+                          7, open the root directory of public key pair that you downloaded by git bash
+                          =====
+
+
+                          ----------git bash -----connection----
+                          1, open the .pem file path
+                          2, type ls -al command in terminal {
+                            chmod 400 firstsampledemo.pem->only -r
+                               ls -al
+total 8
+drwxr-xr-x 1 Getaye 197121    0 Nov  3 21:18 ./
+drwxr-xr-x 1 Getaye 197121    0 Oct  8 07:07 ../
+drwxr-xr-x 1 Getaye 197121    0 Nov  3 00:07 demoapp/
+-r--r--r-- 1 Getaye 197121 1674 Nov  3 21:15 firstsampledemo.pem
+
+                          }
+                          ----------git bash -----connection----
+                          1,sugested ssh client example ssh -i "firstsampledemo.pem" ubuntu@ec2-18-221-18-26.us-east-2.compute.amazonaws.com
+                          2, you have entered into your ubuntu server and get ubuntu directory
+
+                          ---also--let us connect with cyber duck ------
+                          -----------cyberduck connection-------
+                          1, create new SFTP protocol
+                          2, enter host name as ip address of aws amazon server
+                          3, port number is 22
+                          4, user name is ubuntu
+                          5, private key location select the pem file
+                          6, save it
+                          -------last----cyberduck connection-------
+
+
+                          ======================================
+                          --generate ssh key for github and add it--
+                          ======================================
+                          ----------ssh key generation---------
+                          to communicate github with ec2 server,ssh key generation is mandatory
+                          1, first update the server by the ff comand;
+                            -> sudo apt-get update
+                            2, generate ssh key
+                            -> ssh-keygen -t ed25519 -C "asfawgetaye123@gmail.com" email is the github account email;
+                            3,Enter file in which to save the key (/home/ubuntu/.ssh/id_ed25519): default
+                            4,Enter passphrase (empty for no passphrase):default
+                            5,Enter same passphrase again:default
+6,Your identification has been saved in /home/ubuntu/.ssh/id_ed25519.
+-Your public key has been saved in /home/ubuntu/.ssh/id_ed25519.pub.
+The key fingerprint is:SHA256:cxO2qTuK5bQ5ZHOdoEb68fIUoyyPgS/NPM1GPx1e2Cs asfawgetaye123@gmail.com
+-> check by pwd command
+-> ls -al:
+ubuntu@ip-172-31-16-244:~$ ls -al
+total 32
+drwxr-x--- 4 ubuntu ubuntu 4096 Nov  4 04:49 .
+drwxr-xr-x 3 root   root   4096 Nov  4 04:14 ..
+-rw-r--r-- 1 ubuntu ubuntu  220 Jan  6  2022 .bash_logout
+-rw-r--r-- 1 ubuntu ubuntu 3771 Jan  6  2022 .bashrc
+drwx------ 2 ubuntu ubuntu 4096 Nov  4 04:32 .cache
+-rw------- 1 ubuntu ubuntu   20 Nov  4 04:35 .lesshst
+-rw-r--r-- 1 ubuntu ubuntu  807 Jan  6  2022 .profile
+drwx------ 2 ubuntu ubuntu 4096 Nov  4 04:56 .ssh
+-rw-r--r-- 1 ubuntu ubuntu    0 Nov  4 04:49 .sudo_as_admin_successful
+then cd .ssh
+ls -al :ubuntu@ip-172-31-16-244:~/.ssh$ ls -al
+total 20
+drwx------ 2 ubuntu ubuntu 4096 Nov  4 04:56 .
+drwxr-x--- 4 ubuntu ubuntu 4096 Nov  4 04:49 ..
+-rw------- 1 ubuntu ubuntu  397 Nov  4 04:14 authorized_keys
+-rw------- 1 ubuntu ubuntu  464 Nov  4 04:56 id_ed25519
+-rw-r--r-- 1 ubuntu ubuntu  106 Nov  4 04:56 id_ed25519.pub
+=====to go to git hub and copy it===
+->to generate the github ssh key :
+---cat id_ed25519.pub the you get the following code that you add it onto git hub:
+ubuntu@ip-172-31-16-244:~/.ssh$ cat id_ed25519.pub
+ssh-ed25519AAAAC3NzaC1lZDI1NTE5AAAAIPMigtKmApd3a0N5eRzL4ekNUjmpBSzcTgHljjjdA14Z asfawgetaye123@gmail.com
+
+===open your git hub account->
+===>settings->
+========>SSH and GPG keys->
+====================>new SSH key->
+==================================>title:firstsampledemo
+====================================================>key:paste the copied one from above
+Remark here: through ssh my server can communicate with git hub, possible to commit, clone and communicate
+
+
+======install mysql on our server====
+1,update the server
+-> sudo apt-get update
+2,install mysql by this command
+-> sudo apt-get install mysql-server
+3, change the default password for the root user
+-> sudo mysql_secure_installation
+4, check mysql status is running or not
+-> sudo systemctl status mysql
+5, you can also change the root password like this
+->login into mysql
+----> sudo mysql
+------>set password for root;
+------>ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'G1et#@1212';
+Query OK, 0 rows affected (0.00 sec)
+mysql>exit
+
+
+====install phpmyadmin to be able to manage our database easily (what you already know)
+-Install apache first
+->sudo apt-get install apache2
+- start to run apache2 server
+->sudo service apache2 start 
+or
+-> sudo systemctl start apache2
+-check if the server is running
+->sudo systemctl status apache2
+
+==after that go to ec2 instance, 
+select firstsampledemo
+->go to security
+->Open security groups
+->Edit inbound rules
+->Add rule
+->select All Trafic
+->custom->select Ipv4 anywhere
+->save changes
+-
+-->back to firstsampledemo instance and proceed to Public IPv4 address and open address(http://without https-without -s)
+-then you should see the apach2 default pages
+->http://18.222.221.134/
+
+---install php as it is required by phpmyadmin
+->sudo apt-get install php 
+--Install PHPMyaAmin
+->sudo apt-get install phpmyadmin
+     select apach by space tab
+     select no
+
+     -Configure phpmyadmin:
+     ****Vim cheat sheet editor to create file
+     ->sudo vim /etc/apache2/apache2.conf
+     --Add the following line at the end of the file. (This allows apache to include and use the configuration settings specific to phpmyadmin, which are stored in the /etc/phpmyadmin/apache.conf file.)
+     ->Include /etc/phpmyadmin/apache.conf
+     i-insert
+     :wq-enter
+     ---now access phpmyadmin
+    http://18.221.18.26//phpmyadmin
+
+-
+===now let us export the local phpmyadmin database to live server apache and you can also import the exported database file into live server apache by the following procedures
+->create the same local database name from live server database
+->Create the same local database password from live server database
+
+-The install NodeJs
+-Ubuntu usually comes with node already installed on it. But,it is usually an older version.
+-We need to remove it and install the leatest version
+****Remove the old version of node
+->sudo apt purge nodejs npm
+cd ~ to out of home from .ssh path
+-We can install node in multiple ways. One of the ways is to use the node version manager(nvm). So we will start by installing nvm first
+->curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+-Reload your terminal
+->source ~/.bashrc
+-> ls -al
+-check if nvm is installed
+->nvm --version
+-Check the available version of node
+->nvm list-remote
+-Choose the one you wants to install (check the leatest version on the node website)
+->nvm install v20.9.0  
+-Install npm
+->sudo apt-get install npm 
+=========configuration is completed here====
+
+
+================================Commit and push the code to github==
+---------------------------
+->Update the API URL first {===from front end===
+  -******Send the data to the server****
+  // const apiUrl = "http://localhost:4000/add-employee";
+   const apiUrl = "http://18.221.18.26:4000/add-employee";
+    // Send the data to the server
+     
+    // const apiUrl = "http://localhost:4000/login";
+    const apiUrl = "http://18.221.18.26:4000/login";
+
+    ===Backend====
+    set .gitignore
+}
+->Before we move on and add the other pages, let's set up our git and remove files that we don't want to track on git.
+-> set up .gitignore
+-> Change the localhost url to the AWS url on the frontend code
+->Comment out the socketPath used to connect to the local Xammp
+->Commit and push the code to github
+---The after we push we should copy ssh url from github and past it to git bash terminal-git clone url-ssh
+-> git clone git@github.com:Getaye12/demoapp.git
+
+
+
+
+
+
+
+keygen:
+Generate a new SSH key pair by running this command in Git Bash or Terminal:
+ssh-keygen -t ed25519 -C "email"
+generated key:
+ubuntu@ip-172-31-18-84:~$ ssh-keygen -t ed25519 -C "asfawgetaye123@gmail.com"
+
+               cat id_ed25519.pub:
+               ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIho6EDrSmTRvtqjkEqv97OcPSiZ/pU1vDqPD26pbxSj asfawgetaye123@gmail.com
+go to github           
+
+
+          
+
+
+
